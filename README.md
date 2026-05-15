@@ -76,6 +76,7 @@ Network Design Decisions
 Why OSPF internally instead of static routes?
 
 Static routes don't scale. OSPF automatically propagates routes across all devices — add a new subnet and every device learns it instantly.
+
 Why BGP with ISP instead of a default static route?
 
 BGP is the standard for internet routing. It allows proper route advertisement, path selection, and demonstrates understanding of how the real internet works. Static defaults don't scale past one ISP.
