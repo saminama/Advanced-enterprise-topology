@@ -60,8 +60,16 @@ NTP — All devices synchronized to Server1
 Syslog — Centralized logging to Server1
 DMZ Web Server — HTTP/HTTPS accessible from outside
 
-VLANs
-VLANNameSubnet10HR192.168.10.0/2420IT192.168.20.0/2440Management192.168.40.0/2450WiFi192.168.50.0/2460Branch-IT192.168.60.0/2441Branch-HR192.168.41.0/24100Servers192.168.100.0/24
+Vlans 
+| VLAN | Name       | Subnet              |
+|------|------------|---------------------|
+| 10   | HR         | 192.168.10.0/24     |
+| 20   | IT         | 192.168.20.0/24     |
+| 40   | Management | 192.168.40.0/24     |
+| 50   | WiFi       | 192.168.50.0/24     |
+| 60   | Branch-IT  | 192.168.60.0/24     |
+| 41   | Branch-HR  | 192.168.41.0/24     |
+| 100  | Servers    | 192.168.100.0/24    |
 
 Network Design Decisions
 Why OSPF internally instead of static routes?
@@ -77,7 +85,22 @@ If MLS1 goes down, PCs would lose their default gateway. HSRP provides a virtual
 
 
 IP Addressing Summary
-DeviceInterfaceIP AddressRouter1g0/0203.0.113.2/30Router1g0/110.0.0.1/30Router2g0/0203.0.113.6/30Router2g0/110.0.2.1/30ASA0g1/1 (outside)10.0.0.2/30ASA0g1/2 (inside)10.0.1.1/30ASA0g1/3 (DMZ)172.16.0.1/30MLS1g0/210.0.1.2/30BranchMLS1g0/110.0.2.2/30Server1fa0192.168.100.10/24DMZ Serverfa0172.16.0.2/30ISPg0/0203.0.113.1/30ISPg0/1203.0.113.5/30
+| Device      | Interface       | IP Address          |
+|-------------|-----------------|---------------------|
+| Router1     | g0/0            | 203.0.113.2/30      |
+| Router1     | g0/1            | 10.0.0.1/30         |
+| Router2     | g0/0            | 203.0.113.6/30      |
+| Router2     | g0/1            | 10.0.2.1/30         |
+| ASA0        | g1/1 (outside)  | 10.0.0.2/30         |
+| ASA0        | g1/2 (inside)   | 10.0.1.1/30         |
+| ASA0        | g1/3 (DMZ)      | 172.16.0.1/30       |
+| MLS1        | g0/2            | 10.0.1.2/30         |
+| BranchMLS1  | g0/1            | 10.0.2.2/30         |
+| Server1     | fa0             | 192.168.100.10/24   |
+| DMZ Server  | fa0             | 172.16.0.2/30       |
+| ISP         | g0/0            | 203.0.113.1/30      |
+| ISP         | g0/1            | 203.0.113.5/30      |
+
 
 How to Open
 
