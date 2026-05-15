@@ -3,6 +3,7 @@ advanced Enterprise Network Lab — Cisco Packet Tracer
 A full enterprise network simulation built from scratch in Cisco Packet Tracer, covering routing, security, redundancy, and network services across two sites connected via IPsec VPN.
 
 Topology Overview
+![Topology](TOPOLOGY.png)
 Main Site
 
 Router1 — Edge router, BGP peering with ISP, OSPF redistribution
