@@ -72,15 +72,22 @@ Vlans
 | 100  | Servers    | 192.168.100.0/24    |
 
 Network Design Decisions
+
 Why OSPF internally instead of static routes?
+
 Static routes don't scale. OSPF automatically propagates routes across all devices — add a new subnet and every device learns it instantly.
 Why BGP with ISP instead of a default static route?
+
 BGP is the standard for internet routing. It allows proper route advertisement, path selection, and demonstrates understanding of how the real internet works. Static defaults don't scale past one ISP.
 Why centralize DHCP on Server1 instead of router DHCP?
 In enterprise networks DHCP is always on a dedicated server. Using ip helper-address to relay requests across VLANs mirrors real production design.
+
 Why DMZ?
+
 The web server needs to be reachable from outside but must never have direct access to the internal LAN. The DMZ security zone on the ASA enforces this isolation with explicit ACL rules.
+
 Why HSRP?
+
 If MLS1 goes down, PCs would lose their default gateway. HSRP provides a virtual IP that automatically fails over to MLS2 — zero downtime for end users.
 
 
